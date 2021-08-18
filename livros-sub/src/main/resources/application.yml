@@ -1,0 +1,19 @@
+micronaut:
+  application:
+    name: apilivrossub
+  server:
+    port: 8085
+cassandra:
+  default:
+    basic:
+      contact-points:
+        - ${cassandra_contact_points:localhost}
+      session-keyspace: ${cassandra_session_keyspace:filmesdb}
+      load-balancing-policy:
+        local-datacenter: ${cassandra_local_datacenter:datacenter1}
+nats:
+  addresses:
+    - nats://localhost:4222
+endpoints:
+  health:
+    enabled: true

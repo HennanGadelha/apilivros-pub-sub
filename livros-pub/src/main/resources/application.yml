@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: apilivrosPublisher
+  server:
+    port: 8084
+nats:
+  addresses:
+    - nats://localhost:4222
+
+
+endpoints:
+  health:
+    enabled: true
+    details-visible: ANONYMOUS
