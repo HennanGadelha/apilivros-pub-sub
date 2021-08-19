@@ -1,8 +1,6 @@
 package com.hennangadelha.livros.controller
 
 import com.hennangadelha.livros.models.Livro
-import com.hennangadelha.infra.LivroNatsClient
-import com.hennangadelha.infra.LivroNatsListener
 import com.hennangadelha.livros.service.LivroService
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller

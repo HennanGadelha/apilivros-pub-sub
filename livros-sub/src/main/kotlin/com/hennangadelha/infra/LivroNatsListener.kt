@@ -7,11 +7,11 @@ import io.micronaut.nats.annotation.NatsListener
 import io.micronaut.nats.annotation.Subject
 
 @NatsListener
-interface LivroNatsListener {
+class LivroNatsListener {
 
     @Subject("livro")
     fun receive(@Body livro: Livro){
-        println(livro)
+        println(livro.toString())
     }
 
 

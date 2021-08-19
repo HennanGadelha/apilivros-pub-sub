@@ -9,8 +9,6 @@ class LivroServiceImpl(private val livroClient: LivroNatsClient) : LivroService 
 
     override fun cadastrar(livro: Livro) : Livro {
         livroClient.send(livro)
-        livroClient.teste("foi")
-        println("chamou service porra")
         return livro
 
     }
