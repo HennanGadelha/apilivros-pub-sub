@@ -8,7 +8,7 @@ cassandra:
     basic:
       contact-points:
         - ${cassandra_contact_points:localhost}
-      session-keyspace: ${cassandra_session_keyspace:filmesdb}
+      session-keyspace: ${cassandra_session_keyspace:livrosdb}
       load-balancing-policy:
         local-datacenter: ${cassandra_local_datacenter:datacenter1}
 nats:
