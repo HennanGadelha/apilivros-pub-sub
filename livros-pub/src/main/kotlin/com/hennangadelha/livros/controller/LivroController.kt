@@ -11,15 +11,13 @@ class LivroController(val livroService: LivroService) {
 
 
     @Post
-    fun cadastro(@Body request: Livro) {
-        livroService.cadastrar(request)
-    }
+    fun cadastro(@Body request: Livro) : HttpResponse<Any> = HttpResponse.ok(livroService.cadastrar(request))
 
     @Put("/{id}")
-    fun alterar(@PathVariable id: String, @Body request: Livro) : HttpResponse<Any> = HttpResponse.ok(livroService.alterar(id, request))
+    fun alterar(@PathVariable id: UUID, @Body request: Livro) : HttpResponse<Any> = HttpResponse.ok(livroService.alterar(id,request))
 
     @Delete("/{id}")
-    fun deletar(@PathVariable id: String) : HttpResponse<Any>  = HttpResponse.ok(livroService.delete(id))
+    fun deletar(@PathVariable id: UUID) : HttpResponse<Any> = HttpResponse.ok(livroService.delete(id))
 
 
 }

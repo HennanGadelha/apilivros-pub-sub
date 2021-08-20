@@ -2,7 +2,6 @@ package com.hennangadelha.livro.repository
 
 import com.datastax.oss.driver.api.core.CqlSession
 import com.datastax.oss.driver.api.core.cql.SimpleStatement
-import com.hennangadelha.infra.LivroNatsListener
 import com.hennangadelha.livro.model.Livro
 import java.util.*
 import javax.inject.Singleton
@@ -22,23 +21,23 @@ class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroRepository {
         return livro
     }
 
-    override fun alterar(id: String, livro: Livro): Livro {
+    override fun alterar(id: UUID, livro: Livro) {
 
         cqlSession.execute(
             SimpleStatement.newInstance(
-                "UPDATE livro SET titulo = ?, sinopse = ? WHERE id = $id",
+                "UPDATE livrosdb.livro SET titulo = ?, editora = ? WHERE id = $id",
                 livro.titulo,
-                livro.editora
+                livro.editora,
             )
         )
 
-        return livro
     }
 
-    override fun deletar(id: String) {
+    override fun deletar(id: UUID) {
         cqlSession.execute(
             SimpleStatement
-                .newInstance("DELETE  FROM filme WHERE filmeuuid = $id")
+                .newInstance("DELETE FROM livrosdb.livro WHERE id = ?", id)
         )
+
     }
 }
