@@ -3,6 +3,16 @@ micronaut:
     name: apilivrosPublisher
   server:
     port: 8084
+    cors:
+      enabled: true
+      configurations:
+        all:
+          allowedHeaders:
+            - Content-Type
+          allowedMethods:
+            - POST
+            - PUT
+            - DELETE
 nats:
   addresses:
     - nats://localhost:4222
