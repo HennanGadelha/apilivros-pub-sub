@@ -1,0 +1,24 @@
+micronaut:
+  application:
+    name: apilivrosEngine
+  server:
+    port: 8086
+  cassandra:
+    default:
+      basic:
+        contact-points:
+          - ${cassandra_contact_points:localhost}
+        session-keyspace: ${cassandra_session_keyspace:livrosdb}
+        load-balancing-policy:
+          local-datacenter: ${cassandra_local_datacenter:datacenter1}
+cassandra:
+  default:
+    clusterName: '"myCluster"'
+    contactPoint: '"localhost"'
+    port: 9042
+    maxSchemaAgreementWaitSeconds: 20
+    ssl: true
+
+endpoints:
+  health:
+    enabled: true
