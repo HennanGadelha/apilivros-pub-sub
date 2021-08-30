@@ -5,7 +5,9 @@ import com.hennangadelha.core.port.LivroEntityServicePort
 import com.hennangadelha.database.model.LivroEntity
 import com.hennangadelha.database.repository.LivroRepository
 import java.util.*
+import javax.inject.Singleton
 
+@Singleton
 class LivroEntityService(val livroRepository: LivroRepository):LivroEntityServicePort {
 
     override fun findAll(): List<LivroEntity> {
@@ -13,6 +15,6 @@ class LivroEntityService(val livroRepository: LivroRepository):LivroEntityServic
     }
 
     override fun findById(id: UUID): LivroEntity {
-        TODO("Not yet implemented")
+        return livroRepository.buscarPorId(id)
     }
 }

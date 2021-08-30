@@ -1,4 +1,4 @@
-package com.hennangadelha.entrypoint.controller.dto
+package com.hennangadelha.entrypoint.dto
 
 import java.util.*
 

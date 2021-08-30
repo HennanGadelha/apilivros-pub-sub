@@ -1,11 +1,8 @@
 package com.hennangadelha.entrypoint.controller
 
 import com.hennangadelha.core.mapper.LivroConverter
-import com.hennangadelha.core.model.Livro
 import com.hennangadelha.core.port.LivroServicePort
-import com.hennangadelha.core.service.LivroService
-import com.hennangadelha.database.repository.LivroRepository
-import com.hennangadelha.entrypoint.controller.dto.LivroResponse
+import com.hennangadelha.entrypoint.dto.LivroResponse
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get

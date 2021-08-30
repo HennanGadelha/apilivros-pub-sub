@@ -8,6 +8,6 @@ interface LivroRepository {
 
     fun listarTodos(): List<LivroEntity>
 
-    fun buscarPorId(id: UUID) : Livro
+    fun buscarPorId(id: UUID) : LivroEntity
 
 }

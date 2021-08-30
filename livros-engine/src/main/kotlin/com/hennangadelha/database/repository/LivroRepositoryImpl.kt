@@ -4,8 +4,10 @@ import com.datastax.oss.driver.api.core.CqlSession
 import com.datastax.oss.driver.api.core.cql.SimpleStatement
 import com.hennangadelha.core.model.Livro
 import com.hennangadelha.database.model.LivroEntity
-import jakarta.inject.Singleton
+
+
 import java.util.*
+import javax.inject.Singleton
 
 @Singleton
 class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroRepository {
@@ -28,7 +30,7 @@ class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroRepository {
 
     }
 
-    override fun buscarPorId(id: UUID): Livro {
+    override fun buscarPorId(id: UUID): LivroEntity {
 
         val livro = cqlSession.execute(
 
@@ -38,7 +40,7 @@ class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroRepository {
         )
 
         return livro.map {
-            Livro(
+            LivroEntity(
                 it.getUuid("id"),
                 it.getString("titulo"),
                 it.getString("editora")
