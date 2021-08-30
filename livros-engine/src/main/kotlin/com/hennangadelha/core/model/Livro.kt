@@ -1,4 +1,4 @@
-package com.hennangadelha.model
+package com.hennangadelha.core.model
 
 import java.util.*
 

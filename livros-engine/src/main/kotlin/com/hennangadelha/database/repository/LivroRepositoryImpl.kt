@@ -1,8 +1,9 @@
-package com.hennangadelha.repository
+package com.hennangadelha.database.repository
 
 import com.datastax.oss.driver.api.core.CqlSession
 import com.datastax.oss.driver.api.core.cql.SimpleStatement
-import com.hennangadelha.model.Livro
+import com.hennangadelha.core.model.Livro
+import com.hennangadelha.database.model.LivroEntity
 import jakarta.inject.Singleton
 import java.util.*
 
@@ -10,7 +11,7 @@ import java.util.*
 class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroRepository {
 
 
-    override fun listarTodos(): List<Livro> {
+    override fun listarTodos(): List<LivroEntity> {
 
         val resultQuery = cqlSession.execute(
             SimpleStatement
@@ -18,7 +19,7 @@ class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroRepository {
         )
 
         return resultQuery.map {
-            Livro(
+            LivroEntity(
                 it.getUuid("id"),
                 it.getString("titulo"),
                 it.getString("editora")
