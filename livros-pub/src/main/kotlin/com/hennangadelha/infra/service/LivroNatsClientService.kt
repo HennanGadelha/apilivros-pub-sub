@@ -1,12 +1,12 @@
-package com.hennangadelha.livros.service
+package com.hennangadelha.infra.service
 
-import com.hennangadelha.livros.models.Livro
+import com.hennangadelha.core.models.Livro
 
 import java.util.*
 import javax.inject.Singleton
 
 @Singleton
-interface LivroService {
+interface LivroNatsClientService {
 
     fun cadastrar(livro: Livro): Livro
 
