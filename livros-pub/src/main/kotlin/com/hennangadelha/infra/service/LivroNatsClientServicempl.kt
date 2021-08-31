@@ -13,6 +13,7 @@ import javax.inject.Singleton
 class LivroNatsClientServicempl(private val livroClient: LivroNatsClient) : LivroEventServicePort {
 
     private val logger: Logger = LoggerFactory.getLogger(this::class.java)
+
     override fun cadastrar(livroEvent: LivroEvent) {
         livroClient.send(livroEvent)
         logger.info("Enviando livro ao broken: ${livroEvent.toString()}")

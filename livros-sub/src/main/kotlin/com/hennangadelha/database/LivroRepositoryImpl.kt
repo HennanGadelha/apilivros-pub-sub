@@ -1,15 +1,18 @@
-package com.hennangadelha.livro.repository
+package com.hennangadelha.database
 
 import com.datastax.oss.driver.api.core.CqlSession
 import com.datastax.oss.driver.api.core.cql.SimpleStatement
-import com.hennangadelha.livro.model.Livro
+import com.hennangadelha.core.model.Livro
+import com.hennangadelha.core.port.LivroEntityServicePort
+import com.hennangadelha.database.LivroRepository
+import com.hennangadelha.database.model.LivroEntity
 import java.util.*
 import javax.inject.Singleton
 
 @Singleton
-class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroRepository {
+class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroEntityServicePort {
 
-    override fun cadastrar(livro: Livro): Livro {
+    override fun cadastrar(livro: LivroEntity) {
         cqlSession.execute(
             SimpleStatement.newInstance(
                 "INSERT INTO livro (id, titulo, editora) VALUES (?,?,?) IF NOT EXISTS",
@@ -18,10 +21,10 @@ class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroRepository {
                 livro.editora
             )
         )
-        return livro
+
     }
 
-    override fun alterar(id: UUID, livro: Livro) {
+    override fun alterar(id: UUID, livro: LivroEntity) {
 
         cqlSession.execute(
             SimpleStatement.newInstance(
@@ -40,4 +43,7 @@ class LivroRepositoryImpl(val cqlSession: CqlSession) : LivroRepository {
         )
 
     }
+
+
+
 }

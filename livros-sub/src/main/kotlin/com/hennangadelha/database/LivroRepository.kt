@@ -1,6 +1,6 @@
-package com.hennangadelha.livro.repository
+package com.hennangadelha.database
 
-import com.hennangadelha.livro.model.Livro
+import com.hennangadelha.core.model.Livro
 import java.util.*
 
 
